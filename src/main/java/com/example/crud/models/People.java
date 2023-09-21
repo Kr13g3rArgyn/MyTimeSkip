@@ -1,5 +1,8 @@
 package com.example.crud.models;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 @Entity
 @Table(name = "people")
 public class People {
@@ -7,15 +10,23 @@ public class People {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "name", nullable = false)
+    @NotNull
+    @Size(min = 3, max = 40, message = "Name should be between 3 and 40 characters")
     private String name;
     @Column(name = "alive")
+    @NotNull
     private Boolean alive;
     @Column(name="species")
+    @NotNull
+    @Size(min = 2, max = 20,message = "Species should be between 2 and 20 characters")
     private String species;
     @Column(name = "gender")
+    @NotNull
+    @Size(min = 2, max = 6, message = "Gender can't be longer than 6 and shorter than 2 characters")
     private String gender;
     public People(){
     }
+
     public People(int id, String name, Boolean alive, String species, String gender) {
         this.id = id;
         this.name = name;

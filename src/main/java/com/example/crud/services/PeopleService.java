@@ -2,6 +2,7 @@ package com.example.crud.services;
 
 import com.example.crud.models.People;
 import com.example.crud.repository.PeopleRepository;
+import com.example.crud.util.PersonNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,9 @@ public class PeopleService {
 
     public People findOne(int id){
         Optional<People> foundDude = peopleRepository.findById(id);
-        return foundDude.orElse(null);
+        return foundDude.orElseThrow(PersonNotFoundException::new);
     }
+    @Transactional
     public People create(People people){
         return peopleRepository.save(people);
     }
@@ -45,4 +47,7 @@ public class PeopleService {
     public void deletePeople(int id){
         peopleRepository.deleteById(id);
     }
+
+
+
 }

@@ -1,0 +1,13 @@
+package com.example.crud.util;
+
+
+
+public class PersonErrorResponse {
+    private String message;
+    private Long time;
+
+    public PersonErrorResponse(String message, Long time) {
+        this.message = message;
+        this.time = time;
+    }
+}
