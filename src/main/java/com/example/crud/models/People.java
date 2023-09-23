@@ -3,6 +3,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "people")
 public class People {
@@ -24,6 +27,14 @@ public class People {
     @NotNull
     @Size(min = 2, max = 6, message = "Gender can't be longer than 6 and shorter than 2 characters")
     private String gender;
+
+    //After DTO
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+    @Column(name = "created_who")
+    private String created_who;
     public People(){
     }
 
