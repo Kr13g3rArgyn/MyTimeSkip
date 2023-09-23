@@ -28,6 +28,30 @@ public class People {
     @Size(min = 2, max = 6, message = "Gender can't be longer than 6 and shorter than 2 characters")
     private String gender;
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getCreated_who() {
+        return created_who;
+    }
+
+    public void setCreated_who(String created_who) {
+        this.created_who = created_who;
+    }
+
     //After DTO
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -35,6 +59,8 @@ public class People {
     private LocalDateTime updatedAt;
     @Column(name = "created_who")
     private String created_who;
+
+
     public People(){
     }
 
