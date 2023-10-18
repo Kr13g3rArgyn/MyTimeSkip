@@ -1,7 +1,4 @@
 package com.example.crud.util;
-
-
-
 public class PersonErrorResponse {
     private String message;
     private Long time;

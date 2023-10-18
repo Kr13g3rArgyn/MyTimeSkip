@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,13 +22,13 @@ public class PeopleService {
     public List<People> findAll(){
         return peopleRepository.findAll();
     }
-
     public People findOne(int id){
         Optional<People> foundDude = peopleRepository.findById(id);
         return foundDude.orElseThrow(PersonNotFoundException::new);
     }
     @Transactional
     public People create(People people){
+        enrichPerson(people);
         return peopleRepository.save(people);
     }
     public People updatePeople(int id, People updatedPeople) {
@@ -43,11 +44,14 @@ public class PeopleService {
             return null;
         }
     }
-
     public void deletePeople(int id){
         peopleRepository.deleteById(id);
     }
 
-
+    private void enrichPerson(People people){
+        people.setCreatedAt(LocalDateTime.now());
+        people.setUpdatedAt(LocalDateTime.now());
+        people.setCreated_who("Rich");
+    }
 
 }
