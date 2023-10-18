@@ -25,6 +25,10 @@ public class People {
     @Size(min = 2, max = 7, message = "Gender can't be longer than 6 and shorter than 2 characters")
     private String gender;
 
+    @ManyToOne
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private Locations locations;
+
     //After DTO
     @Column(name = "created_at")
     private LocalDateTime createdAt;
