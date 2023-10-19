@@ -55,3 +55,9 @@ public class PeopleService {
     }
 
 }
+//server.port=8081
+//        spring.datasource.url=jdbc:postgresql://localhost:2023/postgres
+//        spring.datasource.username=postgres
+//        spring.datasource.password=postgres
+//        spring.datasource.driver-class-name=org.postgresql.Driver
+//        spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
